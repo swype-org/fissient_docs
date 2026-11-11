@@ -21,7 +21,7 @@ You can receive events two ways. Both deliver the same events.
 | `funding.received` | A deposit arrives | The funding transaction |
 | `portfolio.updated` | A user's holdings change after an order | `user_id` and `order_id` |
 
-Two more types, `eligibility.changed` and `instrument.updated`, are reserved. You can subscribe to them now, but they aren't sent yet. Until they are, read [eligibility](/api-reference/users/eligibility) and [instruments](/api-reference/instruments/list) when you need the current state.
+Subscribing to a type that isn't in this table returns `invalid_events`. To see what a user can buy or whether an instrument's status has changed, read [eligibility](/api-reference/users/eligibility) and [instruments](/api-reference/instruments/list) when you need the current state.
 
 ## The event object
 
@@ -75,7 +75,7 @@ Two more types, `eligibility.changed` and `instrument.updated`, are reserved. Yo
     Every delivery carries a signature header:
 
     ```text
-    OneAPI-Signature: t=1731353951,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff536d0ce8e108d8bd
+    Webhook-Signature: t=1731353951,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff536d0ce8e108d8bd
     ```
 
     `t` is a Unix timestamp. `v1` is an HMAC-SHA256 of `{t}.{raw request body}`, keyed with your endpoint's secret and hex-encoded. Compute it yourself and compare.
