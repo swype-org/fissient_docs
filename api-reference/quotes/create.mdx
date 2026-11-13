@@ -129,6 +129,15 @@ Creating a quote moves no money. Read-only keys can create quotes.
     <ResponseField name="breakdown" type="object">
       What the fee is made of: `execution_usd`, `partner_markup_usd` and `network_and_routing_usd`.
     </ResponseField>
+    <ResponseField name="exit_estimate_usd" type="string">
+      Leveraged opens only. What closing the position and bringing the money back is expected to cost. The close is quoted exactly when it happens.
+    </ResponseField>
+    <ResponseField name="round_trip_fee_usd" type="string">
+      Leveraged opens only. `all_in_fee_usd` plus `exit_estimate_usd`: the cost of getting in and out.
+    </ResponseField>
+    <ResponseField name="round_trip_bps" type="number">
+      `round_trip_fee_usd` in basis points of the amount put in. At 300 or more the quote carries a `high_fees` warning. The order can still be placed.
+    </ResponseField>
   </Expandable>
 </ResponseField>
 <ResponseField name="settlement_estimate" type="string">
