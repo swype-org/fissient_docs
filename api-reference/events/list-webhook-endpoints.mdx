@@ -1,0 +1,62 @@
+---
+title: "List webhook endpoints"
+api: "GET /v1/webhook-endpoints"
+description: "Returns your webhook endpoints in this key's mode."
+---
+
+Returns the endpoints registered in the mode of the key you call with, newest first. Deleted endpoints are left out. Signing secrets are never returned here. You see a secret once, when you [create the endpoint](/api-reference/events/create-webhook-endpoint).
+
+## Returns
+
+<ResponseField name="object" type="string">
+  Always `list`.
+</ResponseField>
+<ResponseField name="data" type="object[]">
+  The endpoints.
+
+  <Expandable title="Endpoint">
+    <ResponseField name="id" type="string">
+      Unique id, prefixed `we_`.
+    </ResponseField>
+    <ResponseField name="object" type="string">
+      Always `webhook_endpoint`.
+    </ResponseField>
+    <ResponseField name="url" type="string">
+      The delivery URL.
+    </ResponseField>
+    <ResponseField name="events" type="string[]">
+      The event types this endpoint receives.
+    </ResponseField>
+    <ResponseField name="status" type="string">
+      `enabled`.
+    </ResponseField>
+    <ResponseField name="created_at" type="string">
+      When the endpoint was registered.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+  ```bash cURL
+  curl https://invest-api.blink.cash/v1/webhook-endpoints \
+    -H "Authorization: Bearer $FISSIENT_KEY"
+  ```
+</RequestExample>
+
+<ResponseExample>
+  ```json 200
+  {
+    "object": "list",
+    "data": [
+      {
+        "id": "we_01M761YWXSNWT9B06R17TE5F59",
+        "object": "webhook_endpoint",
+        "url": "https://example.com/webhooks/fissient",
+        "events": ["order.updated", "funding.received"],
+        "status": "enabled",
+        "created_at": "2026-11-13T20:14:02.118Z"
+      }
+    ]
+  }
+  ```
+</ResponseExample>

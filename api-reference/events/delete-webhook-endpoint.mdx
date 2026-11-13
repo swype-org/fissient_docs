@@ -1,0 +1,46 @@
+---
+title: "Delete a webhook endpoint"
+api: "DELETE /v1/webhook-endpoints/{id}"
+description: "Stops deliveries to an endpoint. Needs a secret key."
+---
+
+Deliveries to the endpoint stop, including retries of events already sent. This can't be undone. To start receiving events at that URL again, [create a new endpoint](/api-reference/events/create-webhook-endpoint), which comes with a new signing secret.
+
+To change an endpoint's URL or event types, create the new one first, then delete the old one, so you don't miss events in between.
+
+## Path
+
+<ParamField path="id" type="string" required>
+  The endpoint id, prefixed `we_`.
+</ParamField>
+
+## Returns
+
+<ResponseField name="id" type="string">
+  The endpoint id.
+</ResponseField>
+<ResponseField name="object" type="string">
+  Always `webhook_endpoint`.
+</ResponseField>
+<ResponseField name="deleted" type="boolean">
+  Always `true`.
+</ResponseField>
+
+Deleting an endpoint that doesn't exist, was already deleted or belongs to the other mode returns `404 webhook_endpoint_not_found`.
+
+<RequestExample>
+  ```bash cURL
+  curl -X DELETE https://invest-api.blink.cash/v1/webhook-endpoints/we_01M761YWXSNWT9B06R17TE5F59 \
+    -H "Authorization: Bearer $FISSIENT_KEY"
+  ```
+</RequestExample>
+
+<ResponseExample>
+  ```json 200
+  {
+    "id": "we_01M761YWXSNWT9B06R17TE5F59",
+    "object": "webhook_endpoint",
+    "deleted": true
+  }
+  ```
+</ResponseExample>

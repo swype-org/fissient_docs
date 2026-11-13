@@ -17,7 +17,7 @@ Yield instruments turn an idle dollar balance into one that earns. Users deposit
 ## Show the rate
 
 ```bash
-curl https://api.fissient.com/v1/instruments/savings:usd \
+curl https://invest-api.blink.cash/v1/instruments/savings:usd \
   -H "Authorization: Bearer $FISSIENT_KEY"
 ```
 
@@ -41,7 +41,7 @@ curl https://api.fissient.com/v1/instruments/savings:usd \
 A deposit is a buy.
 
 ```bash
-curl https://api.fissient.com/v1/quotes \
+curl https://invest-api.blink.cash/v1/quotes \
   -H "Authorization: Bearer $FISSIENT_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -78,7 +78,7 @@ For a chart, [portfolio history](/api-reference/portfolio/history) includes `cum
 A withdrawal is a sell. Use `units: "all"` to take everything out.
 
 ```bash
-curl https://api.fissient.com/v1/quotes \
+curl https://invest-api.blink.cash/v1/quotes \
   -H "Authorization: Bearer $FISSIENT_KEY" \
   -H "Content-Type: application/json" \
   -d '{

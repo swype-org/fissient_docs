@@ -18,7 +18,7 @@ A market order trades now, at the quoted price. The other four types wait for a 
 Create a [quote](/api-reference/quotes/create), then pass its id:
 
 ```bash
-curl "https://api.fissient.com/v1/orders?wait=30" \
+curl "https://invest-api.blink.cash/v1/orders?wait=30" \
   -H "Authorization: Bearer $FISSIENT_KEY" \
   -H "Content-Type: application/json" \
   -d '{ "quote_id": "qt_01M761Y4SY3BG7S7114Z4V3EMG" }'
@@ -29,7 +29,7 @@ curl "https://api.fissient.com/v1/orders?wait=30" \
 Limit and stop orders don't use a quote. Describe the trade and the price directly.
 
 ```bash Buy gold if it drops to $3,800
-curl https://api.fissient.com/v1/orders \
+curl https://invest-api.blink.cash/v1/orders \
   -H "Authorization: Bearer $FISSIENT_KEY" \
   -H "Content-Type: application/json" \
   -H "Idempotency-Key: limit-8431-0001" \
@@ -66,7 +66,7 @@ A stop loss and a take profit are both sell orders on something the user already
 
 <CodeGroup>
   ```bash Take profit
-  curl https://api.fissient.com/v1/orders \
+  curl https://invest-api.blink.cash/v1/orders \
     -H "Authorization: Bearer $FISSIENT_KEY" \
     -H "Content-Type: application/json" \
     -d '{
@@ -80,7 +80,7 @@ A stop loss and a take profit are both sell orders on something the user already
   ```
 
   ```bash Stop loss
-  curl https://api.fissient.com/v1/orders \
+  curl https://invest-api.blink.cash/v1/orders \
     -H "Authorization: Bearer $FISSIENT_KEY" \
     -H "Content-Type: application/json" \
     -d '{
@@ -109,11 +109,11 @@ An order that reaches `expires_at` without triggering becomes `expired`, and its
 
 ```bash
 # A user's open orders
-curl "https://api.fissient.com/v1/users/usr_01M761XYYTGZK43AP9XK0WKQ97/orders?status=open" \
+curl "https://invest-api.blink.cash/v1/users/usr_01M761XYYTGZK43AP9XK0WKQ97/orders?status=open" \
   -H "Authorization: Bearer $FISSIENT_KEY"
 
 # Cancel one
-curl -X POST https://api.fissient.com/v1/orders/ord_01M761YF1AWJXAFAT35AMA04PM/cancel \
+curl -X POST https://invest-api.blink.cash/v1/orders/ord_01M761YF1AWJXAFAT35AMA04PM/cancel \
   -H "Authorization: Bearer $FISSIENT_KEY"
 ```
 

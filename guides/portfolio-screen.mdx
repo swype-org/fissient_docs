@@ -15,7 +15,7 @@ Most investing apps open on the same screen: a big number, a chart, a list of ho
 ## The headline
 
 ```javascript
-const res = await fetch(`https://api.fissient.com/v1/users/${userId}/portfolio`, {
+const res = await fetch(`https://invest-api.blink.cash/v1/users/${userId}/portfolio`, {
   headers: { Authorization: `Bearer ${process.env.FISSIENT_KEY}` },
 });
 const { summary, positions } = await res.json();
@@ -47,7 +47,7 @@ Use each position's `name` for the label. Every position also has `value_display
 ## The chart
 
 ```bash
-curl "https://api.fissient.com/v1/users/usr_01M761XYYTGZK43AP9XK0WKQ97/portfolio/history?period=1M" \
+curl "https://invest-api.blink.cash/v1/users/usr_01M761XYYTGZK43AP9XK0WKQ97/portfolio/history?period=1M" \
   -H "Authorization: Bearer $FISSIENT_KEY"
 ```
 
@@ -79,7 +79,7 @@ A new account has only a point or two. Make sure the chart still looks right wit
 ## Activity
 
 ```bash
-curl "https://api.fissient.com/v1/users/usr_01M761XYYTGZK43AP9XK0WKQ97/activity?limit=20" \
+curl "https://invest-api.blink.cash/v1/users/usr_01M761XYYTGZK43AP9XK0WKQ97/activity?limit=20" \
   -H "Authorization: Bearer $FISSIENT_KEY"
 ```
 

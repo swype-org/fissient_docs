@@ -7,7 +7,7 @@ The Fissient API is organized around REST. It accepts JSON request bodies, retur
 
 <CodeGroup>
   ```text Base URL
-  https://api.fissient.com
+  https://invest-api.blink.cash
   ```
 </CodeGroup>
 
@@ -62,7 +62,9 @@ The same base URL serves the sandbox and live mode. Your [API key](/api-referenc
 
 ## Rate limits
 
-Each API key can make 50 requests per second. Above that, requests return `429` with the code `rate_limited` and a `Retry-After` header. Back off and retry.
+Your account can make 50 requests per second in each mode. All of your keys share that allowance, so creating more keys doesn't raise it. Quotes and asset search have a smaller allowance of their own: 20 per second. The MCP server counts against the same allowances.
+
+Above a limit, requests return `429` with the code `rate_limited` and a `Retry-After` header. Back off and retry. A request body can be at most 256 KB.
 
 ## Waiting on orders
 
@@ -72,9 +74,9 @@ Endpoints that return an order accept `?wait=`, a number of seconds up to 60. Th
 
 | Resource | URL |
 | --- | --- |
-| OpenAPI 3.1 specification | `https://api.fissient.com/openapi.json` |
-| TypeScript types | `https://api.fissient.com/v1/types.ts` |
-| Guide for AI coding tools | `https://api.fissient.com/llms.txt` |
+| OpenAPI 3.1 specification | `https://invest-api.blink.cash/v1/openapi.json` |
+| TypeScript types | `https://invest-api.blink.cash/v1/types.ts` |
+| Guide for AI coding tools | `https://invest-api.blink.cash/v1/llms.txt` |
 
 ## Endpoints
 

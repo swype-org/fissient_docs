@@ -22,12 +22,12 @@ Without a cursor, the stream starts from now. A comment line is sent every 15 se
 
 <RequestExample>
   ```bash cURL
-  curl -N https://api.fissient.com/v1/events \
+  curl -N https://invest-api.blink.cash/v1/events \
     -H "Authorization: Bearer $FISSIENT_KEY"
   ```
 
   ```javascript Node.js
-  const res = await fetch("https://api.fissient.com/v1/events", {
+  const res = await fetch("https://invest-api.blink.cash/v1/events", {
     headers: { Authorization: `Bearer ${process.env.FISSIENT_KEY}` },
   });
 

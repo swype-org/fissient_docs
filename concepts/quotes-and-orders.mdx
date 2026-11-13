@@ -116,7 +116,7 @@ You have three options. Use whichever fits your stack.
     Add `?wait=30` when you place or retrieve an order. The response is held, for up to 60 seconds, until the order reaches a state that needs your attention.
 
     ```bash
-    curl "https://api.fissient.com/v1/orders?wait=30" \
+    curl "https://invest-api.blink.cash/v1/orders?wait=30" \
       -H "Authorization: Bearer $FISSIENT_KEY" \
       -H "Content-Type: application/json" \
       -d '{ "quote_id": "qt_01M761Y4SY3BG7S7114Z4V3EMG" }'
@@ -135,7 +135,7 @@ You have three options. Use whichever fits your stack.
 To sell, quote with `side: "sell"` and `units`. Pass `"all"` to sell the whole position.
 
 ```bash
-curl https://api.fissient.com/v1/quotes \
+curl https://invest-api.blink.cash/v1/quotes \
   -H "Authorization: Bearer $FISSIENT_KEY" \
   -H "Content-Type: application/json" \
   -d '{

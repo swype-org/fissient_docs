@@ -143,7 +143,7 @@ Fissient uses standard HTTP status codes. `2xx` means success, `4xx` means the r
 Branch on `code` for cases you handle specifically, fall back to `type`, and treat anything unknown as a generic failure.
 
 ```javascript
-const res = await fetch("https://api.fissient.com/v1/quotes", { method: "POST", headers, body });
+const res = await fetch("https://invest-api.blink.cash/v1/quotes", { method: "POST", headers, body });
 
 if (!res.ok) {
   const { error } = await res.json();

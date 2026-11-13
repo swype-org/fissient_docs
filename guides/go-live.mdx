@@ -20,7 +20,7 @@ Going live means swapping your test key for a live one. Before you do, work thro
     Each user's account is controlled jointly by you and by us. Before you create live users, register a public key that represents your side of that control:
 
     ```bash
-    curl -X PUT https://api.fissient.com/v1/partner/wallet-key \
+    curl -X PUT https://invest-api.blink.cash/v1/partner/wallet-key \
       -H "Authorization: Bearer $FISSIENT_KEY" \
       -H "Content-Type: application/json" \
       -d '{ "public_key": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE..." }'

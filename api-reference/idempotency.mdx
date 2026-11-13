@@ -10,7 +10,7 @@ If a request fails partway, you often can't tell whether it took effect. Idempot
 Add an `Idempotency-Key` header to any `POST` request.
 
 ```bash
-curl https://api.fissient.com/v1/orders \
+curl https://invest-api.blink.cash/v1/orders \
   -H "Authorization: Bearer $FISSIENT_KEY" \
   -H "Content-Type: application/json" \
   -H "Idempotency-Key: 7f3d2a9e-4c1b-4f6e-9a57-2b8e1c0d5f44" \

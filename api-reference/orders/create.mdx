@@ -96,7 +96,7 @@ The [order object](/api-reference/orders/retrieve). Check `status`:
 
 <RequestExample>
   ```bash Market
-  curl "https://api.fissient.com/v1/orders?wait=30" \
+  curl "https://invest-api.blink.cash/v1/orders?wait=30" \
     -H "Authorization: Bearer $FISSIENT_KEY" \
     -H "Content-Type: application/json" \
     -H "Idempotency-Key: order-8431-0001" \
@@ -104,7 +104,7 @@ The [order object](/api-reference/orders/retrieve). Check `status`:
   ```
 
   ```bash Limit
-  curl https://api.fissient.com/v1/orders \
+  curl https://invest-api.blink.cash/v1/orders \
     -H "Authorization: Bearer $FISSIENT_KEY" \
     -H "Content-Type: application/json" \
     -H "Idempotency-Key: limit-8431-0001" \
@@ -119,7 +119,7 @@ The [order object](/api-reference/orders/retrieve). Check `status`:
   ```
 
   ```bash Stop loss
-  curl https://api.fissient.com/v1/orders \
+  curl https://invest-api.blink.cash/v1/orders \
     -H "Authorization: Bearer $FISSIENT_KEY" \
     -H "Content-Type: application/json" \
     -H "Idempotency-Key: stop-8431-0001" \

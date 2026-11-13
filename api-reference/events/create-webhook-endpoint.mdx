@@ -1,17 +1,19 @@
 ---
 title: "Create a webhook endpoint"
 api: "POST /v1/webhook-endpoints"
-description: "Registers a URL to receive events."
+description: "Registers a URL to receive events. Needs a secret key."
 ---
 
 After you register an endpoint, we `POST` each matching event to it, signed with the endpoint's secret. See [Events and webhooks](/guides/events) for the event format and how to verify signatures.
 
 An endpoint receives events for the mode of the key that created it. Register one with a test key for the sandbox and another with a live key for live mode.
 
+Only a secret key can register an endpoint, because an endpoint receives every user's events. Agent and read-only keys get `403 agent_key_not_permitted` or `403 read_only_key`. You can have up to 10 endpoints in each mode.
+
 ## Body
 
 <ParamField body="url" type="string" required>
-  The URL to deliver to. Live endpoints must use `https`.
+  The URL to deliver to. It must use `https` and be reachable from the public internet. Anything else returns `400` with `https_required` or `invalid_url`. We don't follow redirects, so register the final URL.
 </ParamField>
 
 <ParamField body="events" type="string[]">
@@ -38,10 +40,13 @@ An endpoint receives events for the mode of the key that created it. Register on
 <ResponseField name="status" type="string">
   `enabled`.
 </ResponseField>
+<ResponseField name="created_at" type="string">
+  When the endpoint was registered.
+</ResponseField>
 
 <RequestExample>
   ```bash cURL
-  curl https://api.fissient.com/v1/webhook-endpoints \
+  curl https://invest-api.blink.cash/v1/webhook-endpoints \
     -H "Authorization: Bearer $FISSIENT_KEY" \
     -H "Content-Type: application/json" \
     -d '{
@@ -59,7 +64,8 @@ An endpoint receives events for the mode of the key that created it. Register on
     "url": "https://example.com/webhooks/fissient",
     "events": ["order.updated", "funding.received"],
     "secret": "whsec_...",
-    "status": "enabled"
+    "status": "enabled",
+    "created_at": "2026-11-13T20:14:02.118Z"
   }
   ```
 </ResponseExample>

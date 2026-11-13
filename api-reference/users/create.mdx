@@ -23,11 +23,11 @@ US residents and US nationals are refused with `422 us_person`.
 </ParamField>
 
 <ParamField body="investor_type" type="string" required>
-  `retail` or `professional`.
+  `retail` or `professional`. Only a secret key can set `professional`.
 </ParamField>
 
 <ParamField body="kyc_attested" type="boolean" required>
-  `true` if you've verified this person's identity. Users who aren't attested can't buy.
+  `true` if you've verified this person's identity. Users who aren't attested can't buy. Only a secret key can set this to `true`: it is your statement, so an agent key can't make it for you.
 </ParamField>
 
 <ParamField body="display_currency" type="string" default="USD">
@@ -60,7 +60,7 @@ The [user object](/api-reference/users/retrieve).
 
 <RequestExample>
   ```bash cURL
-  curl https://api.fissient.com/v1/users \
+  curl https://invest-api.blink.cash/v1/users \
     -H "Authorization: Bearer $FISSIENT_KEY" \
     -H "Content-Type: application/json" \
     -H "Idempotency-Key: create-user-8431" \
@@ -75,7 +75,7 @@ The [user object](/api-reference/users/retrieve).
   ```
 
   ```javascript Node.js
-  const res = await fetch("https://api.fissient.com/v1/users", {
+  const res = await fetch("https://invest-api.blink.cash/v1/users", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${process.env.FISSIENT_KEY}`,
@@ -98,7 +98,7 @@ The [user object](/api-reference/users/retrieve).
   import os, requests
 
   user = requests.post(
-      "https://api.fissient.com/v1/users",
+      "https://invest-api.blink.cash/v1/users",
       headers={
           "Authorization": f"Bearer {os.environ['FISSIENT_KEY']}",
           "Idempotency-Key": "create-user-8431",

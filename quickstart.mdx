@@ -13,14 +13,14 @@ You need a sandbox secret key. It starts with `sk_test_`. Keep it on your server
 export FISSIENT_KEY="sk_test_..."
 ```
 
-All requests go to `https://api.fissient.com` and authenticate with a bearer token.
+All requests go to `https://invest-api.blink.cash` and authenticate with a bearer token.
 
 <Steps>
   <Step title="Create a user">
     A user is one of your customers. You tell us where they live, their nationality, and that you've verified their identity. We open an account for them.
 
     ```bash
-    curl https://api.fissient.com/v1/users \
+    curl https://invest-api.blink.cash/v1/users \
       -H "Authorization: Bearer $FISSIENT_KEY" \
       -H "Content-Type: application/json" \
       -H "Idempotency-Key: create-user-8431" \
@@ -53,7 +53,7 @@ All requests go to `https://api.fissient.com` and authenticate with a bearer tok
     In the sandbox you can credit a user instantly. In live mode the user sends digital dollars to their account instead. See [Fund accounts](/guides/fund-accounts).
 
     ```bash
-    curl https://api.fissient.com/v1/sandbox/funding/credit \
+    curl https://invest-api.blink.cash/v1/sandbox/funding/credit \
       -H "Authorization: Bearer $FISSIENT_KEY" \
       -H "Content-Type: application/json" \
       -d '{
@@ -70,7 +70,7 @@ All requests go to `https://api.fissient.com` and authenticate with a bearer tok
     A quote is a firm, all-in price for a trade. It tells the user exactly what they'll pay and what they'll get, and it's valid for about a minute.
 
     ```bash
-    curl https://api.fissient.com/v1/quotes \
+    curl https://invest-api.blink.cash/v1/quotes \
       -H "Authorization: Bearer $FISSIENT_KEY" \
       -H "Content-Type: application/json" \
       -d '{
@@ -107,7 +107,7 @@ All requests go to `https://api.fissient.com` and authenticate with a bearer tok
     Pass the quote's `id` to execute it. Adding `?wait=30` holds the response until the order finishes, so one call places and confirms.
 
     ```bash
-    curl "https://api.fissient.com/v1/orders?wait=30" \
+    curl "https://invest-api.blink.cash/v1/orders?wait=30" \
       -H "Authorization: Bearer $FISSIENT_KEY" \
       -H "Content-Type: application/json" \
       -H "Idempotency-Key: order-8431-0001" \
@@ -134,7 +134,7 @@ All requests go to `https://api.fissient.com` and authenticate with a bearer tok
 
   <Step title="Read the portfolio">
     ```bash
-    curl https://api.fissient.com/v1/users/usr_01M761XYYTGZK43AP9XK0WKQ97/portfolio \
+    curl https://invest-api.blink.cash/v1/users/usr_01M761XYYTGZK43AP9XK0WKQ97/portfolio \
       -H "Authorization: Bearer $FISSIENT_KEY"
     ```
 

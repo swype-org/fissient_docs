@@ -15,7 +15,7 @@
   },
   "api": {
     "mdx": {
-      "server": "https://api.fissient.com",
+      "server": "https://invest-api.blink.cash",
       "auth": {
         "method": "bearer"
       }
@@ -130,6 +130,8 @@
             "group": "Events",
             "pages": [
               "api-reference/events/create-webhook-endpoint",
+              "api-reference/events/list-webhook-endpoints",
+              "api-reference/events/delete-webhook-endpoint",
               "api-reference/events/stream"
             ]
           },

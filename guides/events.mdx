@@ -48,7 +48,7 @@ Subscribing to a type that isn't in this table returns `invalid_events`. To see 
 <Steps>
   <Step title="Register an endpoint">
     ```bash
-    curl https://api.fissient.com/v1/webhook-endpoints \
+    curl https://invest-api.blink.cash/v1/webhook-endpoints \
       -H "Authorization: Bearer $FISSIENT_KEY" \
       -H "Content-Type: application/json" \
       -d '{
@@ -64,11 +64,14 @@ Subscribing to a type that isn't in this table returns `invalid_events`. To see 
       "url": "https://example.com/webhooks/fissient",
       "events": ["order.updated", "funding.received"],
       "secret": "whsec_...",
-      "status": "enabled"
+      "status": "enabled",
+      "created_at": "2026-11-13T20:14:02.118Z"
     }
     ```
 
-    Store the `secret`. You need it to verify signatures. Leave out `events` to receive every type. Live endpoints must use `https`.
+    Store the `secret`. It is shown once and you need it to verify signatures. Leave out `events` to receive every type.
+
+    Register endpoints with a secret key. The URL must use `https` and be reachable from the public internet, and we don't follow redirects. You can [list](/api-reference/events/list-webhook-endpoints) your endpoints and [delete](/api-reference/events/delete-webhook-endpoint) one you no longer use.
   </Step>
 
   <Step title="Verify the signature">
@@ -131,7 +134,7 @@ A delivery that fails or times out is retried up to five times, with increasing 
 The stream delivers the same events over Server-Sent Events, without a public URL.
 
 ```bash
-curl -N https://api.fissient.com/v1/events \
+curl -N https://invest-api.blink.cash/v1/events \
   -H "Authorization: Bearer $FISSIENT_KEY"
 ```
 

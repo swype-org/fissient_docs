@@ -29,6 +29,8 @@ The agent holds an **agent key**. Your server holds the **secret key**. That spl
 | Change a user's policy | Yes | No | No |
 | Withdraw money | Yes | No | No |
 | Link wallets and create API keys | Yes | No | No |
+| Confirm a user's identity checks (`kyc_attested`) or mark a user as professional | Yes | No | No |
+| Register or delete webhook endpoints | Yes | No | No |
 
 An agent can't withdraw a user's money, approve its own large orders or raise its own limits, whatever it's told to do.
 
@@ -37,7 +39,7 @@ An agent can't withdraw a user's money, approve its own large orders or raise it
 <Steps>
   <Step title="Create an agent key">
     ```bash
-    curl https://api.fissient.com/v1/api-keys \
+    curl https://invest-api.blink.cash/v1/api-keys \
       -H "Authorization: Bearer $FISSIENT_KEY" \
       -H "Content-Type: application/json" \
       -d '{ "scope": "agent", "label": "assistant" }'
@@ -50,7 +52,7 @@ An agent can't withdraw a user's money, approve its own large orders or raise it
     Decide how much the agent may do unattended.
 
     ```bash
-    curl -X PUT https://api.fissient.com/v1/users/usr_01M761XYYTGZK43AP9XK0WKQ97/policy \
+    curl -X PUT https://invest-api.blink.cash/v1/users/usr_01M761XYYTGZK43AP9XK0WKQ97/policy \
       -H "Authorization: Bearer $FISSIENT_KEY" \
       -H "Content-Type: application/json" \
       -d '{ "max_order_usd": "500.00", "approval_threshold_usd": "100.00" }'
@@ -65,7 +67,7 @@ An agent can't withdraw a user's money, approve its own large orders or raise it
       "mcpServers": {
         "fissient": {
           "type": "http",
-          "url": "https://mcp.fissient.com/mcp",
+          "url": "https://invest-mcp.blink.cash/mcp",
           "headers": { "Authorization": "Bearer ak_test_..." }
         }
       }

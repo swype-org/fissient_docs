@@ -28,7 +28,7 @@ Each instrument reports what's available:
 Add `leverage` and `direction` to a quote. The `funding.amount` is the margin: the most the user can lose.
 
 ```bash
-curl https://api.fissient.com/v1/quotes \
+curl https://invest-api.blink.cash/v1/quotes \
   -H "Authorization: Bearer $FISSIENT_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -115,7 +115,7 @@ Leveraged positions pay or receive a small funding rate every hour, shown as `fu
 Quote with `close: true`, then place the order. Proceeds go to the user's cash balance.
 
 ```bash
-curl https://api.fissient.com/v1/quotes \
+curl https://invest-api.blink.cash/v1/quotes \
   -H "Authorization: Bearer $FISSIENT_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -134,7 +134,7 @@ The closing quote's `position.pnl_usd` shows the result the user is about to loc
 Attach a stop or take profit with a [conditional order](/guides/order-types) that closes the position:
 
 ```bash
-curl https://api.fissient.com/v1/orders \
+curl https://invest-api.blink.cash/v1/orders \
   -H "Authorization: Bearer $FISSIENT_KEY" \
   -H "Content-Type: application/json" \
   -d '{

@@ -8,7 +8,7 @@ An approval threshold puts a person in the loop for big trades. Orders above it 
 ## Set the threshold
 
 ```bash
-curl -X PUT https://api.fissient.com/v1/users/usr_01M761XYYTGZK43AP9XK0WKQ97/policy \
+curl -X PUT https://invest-api.blink.cash/v1/users/usr_01M761XYYTGZK43AP9XK0WKQ97/policy \
   -H "Authorization: Bearer $FISSIENT_KEY" \
   -H "Content-Type: application/json" \
   -d '{ "approval_threshold_usd": "200.00" }'
@@ -42,12 +42,12 @@ curl -X PUT https://api.fissient.com/v1/users/usr_01M761XYYTGZK43AP9XK0WKQ97/pol
   <Step title="Approve or decline">
     <CodeGroup>
       ```bash Approve
-      curl -X POST https://api.fissient.com/v1/orders/ord_01M761YW3824SHD130ET4CD0CW/approve \
+      curl -X POST https://invest-api.blink.cash/v1/orders/ord_01M761YW3824SHD130ET4CD0CW/approve \
         -H "Authorization: Bearer $FISSIENT_KEY"
       ```
 
       ```bash Decline
-      curl -X POST https://api.fissient.com/v1/orders/ord_01M761YW3824SHD130ET4CD0CW/cancel \
+      curl -X POST https://invest-api.blink.cash/v1/orders/ord_01M761YW3824SHD130ET4CD0CW/cancel \
         -H "Authorization: Bearer $FISSIENT_KEY"
       ```
     </CodeGroup>
